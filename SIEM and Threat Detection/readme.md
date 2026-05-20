@@ -1,0 +1,2 @@
+# Detection and Monitoring with SOC Tools
+Hi, this folder contains abs and projects focused on security detection and monitoring using tools such as Wazuh, Elastic, and Splunk.
