@@ -3,6 +3,10 @@
 <img width="1104" height="393" alt="image" src="https://github.com/user-attachments/assets/290aab9d-15bf-4177-8e5f-0a7e59747f14" />
 
 
+
+
+
+
 Hi! Welcome to my GitHub repository. My name is Ayaan Hirsi, and I am a fourth year Cybersecurity student with a strong passion for security operations, network defense, system administration, and secure software development. This repository showcases a collection of projects I have completed throughout my academic journey, personal learning, and hands on cybersecurity practice.
 
 The projects included here reflect my experience working across multiple areas of technology and security, including SIEM engineering, threat detection, security automation, web application security, penetration testing, infrastructure hardening, networking, and Linux system administration. Many of these projects were developed in virtualized enterprise style lab environments designed to simulate real world security operations and attack scenarios.
