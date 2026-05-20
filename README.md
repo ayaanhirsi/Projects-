@@ -1,6 +1,6 @@
 # Projects-
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/5adbad97-0951-4fc3-865e-a83ba6b83f69" />
 
+<img width="1104" height="393" alt="image" src="https://github.com/user-attachments/assets/290aab9d-15bf-4177-8e5f-0a7e59747f14" />
 
 Hi! Welcome to my GitHub repository. My name is Ayaan Hirsi, and I am a fourth year Cybersecurity student with a strong passion for security operations, network defense, system administration, and secure software development. This repository showcases a collection of projects I have completed throughout my academic journey, personal learning, and hands on cybersecurity practice.
 
