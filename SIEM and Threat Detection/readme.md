@@ -1,2 +1,0 @@
-# Detection and Monitoring with SOC Tools
-Hi, throughout my years in college, I have gained hands-on experience working with automation and cybersecurity technologies such as Ansible, Wazuh, Elastic, and Splunk. This repository contains a collection of projects and labs focused on infrastructure automation, system administration, security monitoring, log analysis, and threat detection that I have completed throughout my academic journey.
