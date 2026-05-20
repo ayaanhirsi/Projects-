@@ -1,2 +1,0 @@
-# Web Development and Web Security
-Hi, this folder contains projects and labs focused on both web development and web security. It includes the design and development of web applications as well as security testing and analysis of common web vulnerabilities such as authentication flaws, injection attacks, and insecure configurations. These projects reflect hands-on experience in building functional web applications while also applying security best practices to identify and mitigate potential risks.
