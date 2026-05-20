@@ -1,0 +1,2 @@
+# Networking
+This folder contains projects and labs focused on network security concepts and practices. It includes hands-on work involving network configuration, traffic analysis, and the identification of potential security threats within network environments. The work covers topics such as firewall rules, packet inspection, intrusion detection, secure communication protocols, and general network defense strategies used to protect systems and data.
