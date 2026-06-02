@@ -16,7 +16,7 @@ This repository showcases projects completed through academic coursework, person
 
 I also write cybersecurity articles covering beginner friendly security guides, CTF challenges, and recent cyber news.
 
-📖 Medium Blog: medium.com/@ayaanhirsi2005
+📖 Medium Blog: [Ayaan Hirsi on Medium](https://medium.com/@ayaanhirsi2005)
 
 The goal of this repository is to document my growth in cybersecurity while sharing the projects, labs, and research that have helped strengthen my technical skills.
 
