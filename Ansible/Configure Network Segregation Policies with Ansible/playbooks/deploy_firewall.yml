@@ -1,0 +1,50 @@
+---
+# Deploys a host-specific nftables firewall profile to every machine in the
+# segmented internal network, then validates the service is active.
+#
+# Run from the admin control node:
+#   ansible-playbook -i ../inventory/inventory.ini deploy_firewall.yml
+
+- name: Deploy and validate nftables firewalls across the internal network
+  hosts: internal_network
+  become: true
+  vars:
+    firewall_src_dir: "../firewall"
+    firewall_dst_path: /etc/nftables.conf
+
+  tasks:
+    - name: Ensure nftables is installed
+      ansible.builtin.package:
+        name: nftables
+        state: present
+
+    - name: Deploy host-specific firewall configuration
+      ansible.builtin.copy:
+        src: "{{ firewall_src_dir }}/{{ inventory_hostname }}_nft.conf"
+        dest: "{{ firewall_dst_path }}"
+        owner: root
+        group: root
+        mode: "0644"
+        backup: true
+      notify: Reload nftables
+
+    - name: Enable and start nftables
+      ansible.builtin.systemd:
+        name: nftables
+        enabled: true
+        state: started
+
+    - name: Verify nftables ruleset is active
+      ansible.builtin.command: nft list ruleset
+      register: nft_status
+      changed_when: false
+
+    - name: Report active ruleset line count per host
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }}: {{ nft_status.stdout_lines | length }} active rule lines"
+
+  handlers:
+    - name: Reload nftables
+      ansible.builtin.systemd:
+        name: nftables
+        state: restarted
