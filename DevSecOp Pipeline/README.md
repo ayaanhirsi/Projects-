@@ -1,7 +1,5 @@
 # Automated DevSecOps Security Pipeline
-
-A six-stage CI/CD security pipeline built with Gitea Actions and live-tested
-against a self-hosted Gitea v1.26.1 deployment.
+A six-stage CI/CD security pipeline built with Gitea Actions and live-tested on a self-hosted Gitea v1.26.1 instance. Every step is documented with screenshots in the accompanying PDF report included in this repository.
 
 ## Pipeline stages
 
