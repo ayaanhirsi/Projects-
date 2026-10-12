@@ -1,0 +1,75 @@
+name: DevSecOps Security Pipeline
+
+# Six-stage pipeline: static analysis -> dependency scan -> build ->
+# deploy -> WAF check -> post-deployment validation.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  static-analysis:
+    name: 1. Static Code Analysis (Semgrep)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Semgrep
+        run: |
+          pip install semgrep
+          semgrep scan --config=p/owasp-top-ten --json --output=scanners/semgrep-results.json .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semgrep-results
+          path: scanners/semgrep-results.json
+
+  dependency-scan:
+    name: 2. Dependency Vulnerability Scan (Grype)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Grype
+        run: curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+      - name: Scan dependencies
+        run: grype dir:. -o json > scanners/grype-results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: grype-results
+          path: scanners/grype-results.json
+
+  build-and-test:
+    name: 3. Build & Test
+    needs: [static-analysis, dependency-scan]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build container image
+        run: docker build -t gitea-hardened:${{ github.sha }} .
+      - name: Run test suite
+        run: docker run --rm gitea-hardened:${{ github.sha }} ./run_tests.sh
+
+  notify-developers:
+    name: 4. Developer Notification
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post scan summary to Discord
+        run: python3 scanners/notify_discord.py --semgrep scanners/semgrep-results.json --grype scanners/grype-results.json
+
+  deploy:
+    name: 5. Automated Secure Deployment
+    needs: notify-developers
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy behind WAF
+        run: bash waf/deploy_with_waf.sh
+
+  post-deploy-validation:
+    name: 6. Post-Deployment Validation
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health + security header check
+        run: python3 scanners/post_deploy_check.py --url "$DEPLOY_URL"
