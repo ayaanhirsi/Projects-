@@ -1,0 +1,19 @@
+# Semgrep ruleset used by the static-analysis stage.
+# Uses the OWASP Top 10 pack plus a couple of project-specific rules
+# written after confirming the CWE-89 (SQL injection) finding in Gitea.
+
+rules:
+  - id: raw-sql-string-concat
+    languages: [go]
+    severity: ERROR
+    message: >
+      Possible SQL injection: query string appears to be built with
+      concatenation/formatting instead of a parameterized query.
+    patterns:
+      - pattern-either:
+          - pattern: $DB.Query(fmt.Sprintf("...%s...", ...))
+          - pattern: $DB.Exec(fmt.Sprintf("...%s...", ...))
+    metadata:
+      cwe: "CWE-89: Improper Neutralization of Special Elements used in an SQL Command"
+      references:
+        - https://owasp.org/Top10/A03_2021-Injection/
