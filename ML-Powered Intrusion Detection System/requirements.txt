@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pandas
+scikit-learn
+joblib
+requests
+gspread
+oauth2client
+discord-webhook
+python-dotenv
+pytest
+httpx
