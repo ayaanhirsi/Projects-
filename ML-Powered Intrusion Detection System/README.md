@@ -89,7 +89,3 @@ No SIEM integration, single instance (no scaling), no streaming (Kafka/RabbitMQ)
 ## Dataset & references
 
 Trained on the ToN-IoT dataset (Moustafa, Creech & Slay, UNSW Canberra). Built with FastAPI, scikit-learn, Pydantic, AbuseIPDB, ipinfo and Discord webhooks.
-
-## Team
-
-Thuruvan, Ayaan, Shiza (Group 1, SRT521).
