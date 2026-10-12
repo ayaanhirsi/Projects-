@@ -1,6 +1,6 @@
-# ML-Powered Intrusion Detection System (Phase 3 – Deployment & Security Automation)
+# ML-Powered Intrusion Detection System  (Deployment & Security Automation)
 
-A FastAPI microservice that turns the machine learning models from Phases 1-2 into an operational intrusion detection service. It classifies network flows, enriches results with threat intelligence from AbuseIPDB and ipinfo, logs benign traffic for baselining, and sends real-time Discord alerts for malicious activity. Each stage is documented with annotated screenshots in the accompanying project report.
+A FastAPI microservice that turns the machine learning models into an operational intrusion detection service. It classifies network flows, enriches results with threat intelligence from AbuseIPDB and ipinfo, logs benign traffic for baselining, and sends real-time Discord alerts for malicious activity. Each stage is documented with annotated screenshots in the accompanying project report.
 ## Architecture
 
 ```
