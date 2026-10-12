@@ -1,12 +1,5 @@
-## Assignment 2: Full-Stack Web App
-Name: Ayaan Hirsi
-
-Student ID: 173177221
-
-Date: 2025-12-10
-
 ## Full-Stack Web App: Anime/Movie Recommendation Hub
-This project is a full-stack page application  designed to meet the requirements of Assignment 02. Users can browse, authenticate, and submit reviews for titles.
+This project is a full-stack page application, Users can browse, authenticate, and submit reviews for titles.
 - Project Topic: Anime / Movie Recommendation Hub
 - Front-End Framework: React (Vite)
 - Backend Stack: Node.js, Express.js, MongoDB (Mongoose)
